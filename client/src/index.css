@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.uniuyo-green-primary {
+  color: #00A859;
+}
+
+.uniuyo-green-bg {
+  background-color: #00A859;
+}
+
+.uniuyo-forest-bg {
+  background-color: #053E17;
+}
+
+.uniuyo-vivid-green {
+  color: #00C853;
+}

@@ -1,0 +1,22 @@
+{
+  "short_name": "UNIUYO QR",
+  "name": "UNIUYO QR Attendance Portal",
+  "description": "Official QR Code Attendance System for University of Uyo Students and Lecturers",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0B0F17",
+  "theme_color": "#00A859",
+  "display": "standalone",
+  "orientation": "portrait"
+}
