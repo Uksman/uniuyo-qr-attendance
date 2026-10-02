@@ -12,7 +12,7 @@ const client = postgres(env.DATABASE_URL, { max: 10 });
 export const db = drizzle(client, { schema });
 
 export async function initDb() {
-  let migrationsFolder = path.join(process.cwd(), qr-attendance-db"drizzle");
+  let migrationsFolder = path.join(process.cwd(), "drizzle");
   if (!fs.existsSync(migrationsFolder)) {
     migrationsFolder = fileURLToPath(new URL("../../drizzle", import.meta.url));
   }
