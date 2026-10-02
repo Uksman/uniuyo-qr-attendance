@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { registerStudent } from "../api";
 import { useAuth } from "../auth";
 import { UniuyoLogo } from "../components/UniuyoLogo";
+import { AlertTriangleIcon } from "../components/Icons";
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -56,8 +57,9 @@ export function RegisterPage() {
           </div>
 
           {error && (
-            <div className="mt-4 rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-xs font-semibold text-red-400 text-center">
-              ⚠️ {error}
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-xs font-semibold text-red-400 text-center">
+              <AlertTriangleIcon className="h-4 w-4 shrink-0 text-red-400" />
+              <span>{error}</span>
             </div>
           )}
 

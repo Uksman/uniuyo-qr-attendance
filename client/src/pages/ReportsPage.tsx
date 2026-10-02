@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchLowAttendanceAlerts, fetchReportSummary, type LowAttendanceAlert, type ReportCourse } from "../api";
+import { PrinterIcon, AlertTriangleIcon } from "../components/Icons";
 
 export function ReportsPage() {
   const [courses, setCourses] = useState<ReportCourse[]>([]);
@@ -48,21 +49,23 @@ export function ReportsPage() {
           onClick={handlePrint}
           className="print:hidden rounded-xl bg-[#00A859] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-md shadow-[#00A859]/20 transition hover:bg-[#058648] active:scale-95 flex items-center gap-2"
         >
-          <span>🖨️ Print / Export PDF Report</span>
+          <PrinterIcon className="h-4 w-4" />
+          <span>Print / Export PDF Report</span>
         </button>
       </div>
 
       {error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-xs font-semibold text-red-700">
-          ⚠️ {error}
+        <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-xs font-semibold text-red-700">
+          <AlertTriangleIcon className="h-4 w-4 text-red-600 shrink-0" />
+          <span>{error}</span>
         </div>
       )}
 
       {/* Low Attendance Alert Section */}
       {alerts.length > 0 && (
         <section className="rounded-2xl border-2 border-amber-300 bg-amber-50/50 p-5 shadow-sm">
-          <div className="flex items-center gap-2.5 text-amber-900 font-extrabold text-sm uppercase">
-            <span>⚠️</span>
+          <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm uppercase">
+            <AlertTriangleIcon className="h-4 w-4 text-amber-700 shrink-0" />
             <span>SYSTEM LOW-ATTENDANCE ALERTS (&lt; 75% ATTENDANCE RATE)</span>
           </div>
           <p className="mt-1 text-xs text-amber-800">

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { fetchCourses, startSession, type Course, type SessionPayload } from "../api";
+import { AlertTriangleIcon, QrCodeIcon } from "../components/Icons";
 
 function remainingLabel(expiresAt: string) {
   const ms = new Date(expiresAt).getTime() - Date.now();
@@ -71,8 +72,8 @@ export function LecturerSessionPage() {
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#00A859]" />
 
         <div className="flex items-center gap-3.5">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#053E17] text-white font-bold shadow-md">
-            👨‍🏫
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#00A859]/10 text-[#00A859] border border-[#00A859]/20 shadow-xs">
+            <QrCodeIcon className="h-6 w-6" />
           </div>
           <div>
             <h1 className="text-xl font-extrabold text-slate-900 tracking-wide">
@@ -87,8 +88,9 @@ export function LecturerSessionPage() {
         </p>
 
         {error && (
-          <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs font-semibold text-red-700">
-            ⚠️ {error}
+          <div className="mt-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-3.5 text-xs font-semibold text-red-700">
+            <AlertTriangleIcon className="h-4 w-4 text-red-600 shrink-0" />
+            <span>{error}</span>
           </div>
         )}
 

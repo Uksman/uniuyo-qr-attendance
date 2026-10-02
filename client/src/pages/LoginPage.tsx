@@ -2,6 +2,13 @@ import { FormEvent, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth";
 import { UniuyoLogo } from "../components/UniuyoLogo";
+import {
+  AlertTriangleIcon,
+  AcademicCapIcon,
+  BriefcaseIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+} from "../components/Icons";
 
 export function LoginPage() {
   const { user, login } = useAuth();
@@ -58,8 +65,9 @@ export function LoginPage() {
           </div>
 
           {error && (
-            <div className="mt-4 rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-xs font-semibold text-red-400 text-center">
-              ⚠️ {error}
+            <div className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-red-500/30 bg-red-950/40 p-3 text-xs font-semibold text-red-400 text-center">
+              <AlertTriangleIcon className="h-4 w-4 shrink-0 text-red-400" />
+              <span>{error}</span>
             </div>
           )}
 
@@ -148,30 +156,34 @@ export function LoginPage() {
 
         {/* Demo Fast Fill Buttons */}
         <div className="rounded-xl border border-[#21262D] bg-[#161B22]/80 p-3.5 text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-[#8B949E]">
-            ⚡ Quick Demo Fill Buttons
-          </p>
+          <div className="flex items-center justify-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-[#8B949E]">
+            <SparklesIcon className="h-3.5 w-3.5 text-amber-400" />
+            <span>Quick Demo Fill Buttons</span>
+          </div>
           <div className="mt-2.5 flex flex-wrap gap-2 justify-center">
             <button
               type="button"
               onClick={() => quickFill("lecturer@example.com")}
-              className="rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1 text-xs font-semibold text-white transition hover:border-[#00C853] hover:text-[#00C853]"
+              className="flex items-center gap-1.5 rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1.5 text-xs font-semibold text-white transition hover:border-[#00C853] hover:text-[#00C853]"
             >
-              👨‍🏫 Lecturer
+              <BriefcaseIcon className="h-3.5 w-3.5 text-emerald-400" />
+              <span>Lecturer</span>
             </button>
             <button
               type="button"
               onClick={() => quickFill("student@example.com")}
-              className="rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1 text-xs font-semibold text-white transition hover:border-[#00C853] hover:text-[#00C853]"
+              className="flex items-center gap-1.5 rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1.5 text-xs font-semibold text-white transition hover:border-[#00C853] hover:text-[#00C853]"
             >
-              🎓 Student
+              <AcademicCapIcon className="h-3.5 w-3.5 text-blue-400" />
+              <span>Student</span>
             </button>
             <button
               type="button"
               onClick={() => quickFill("admin@example.com")}
-              className="rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1 text-xs font-semibold text-white transition hover:border-[#F97316] hover:text-[#F97316]"
+              className="flex items-center gap-1.5 rounded-md border border-[#30363D] bg-[#21262D] px-3 py-1.5 text-xs font-semibold text-white transition hover:border-[#F97316] hover:text-[#F97316]"
             >
-              ⚡ Admin
+              <ShieldCheckIcon className="h-3.5 w-3.5 text-amber-400" />
+              <span>Admin</span>
             </button>
           </div>
         </div>
