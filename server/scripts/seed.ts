@@ -1,3 +1,4 @@
+import process from "node:process";
 import { seedDb } from "../src/db/seed.js";
 
 seedDb()
