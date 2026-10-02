@@ -50,6 +50,8 @@ export function clearSession() {
   localStorage.removeItem(USER_KEY);
 }
 
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = getStoredToken();
   const headers = new Headers(options.headers);
@@ -58,7 +60,8 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     headers.set("Authorization", `Bearer ${token}`);
   }
 
-  const response = await fetch(path, { ...options, headers });
+  const url = path.startsWith("http") ? path : `${API_BASE_URL}${path}`;
+  const response = await fetch(url, { ...options, headers });
   const data = (await response.json().catch(() => ({}))) as T & { error?: string };
 
   if (!response.ok) {

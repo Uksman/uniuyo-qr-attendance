@@ -6,7 +6,10 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      "/api": "https://uniuyo-qr-attendance-fttn.onrender.com",
+      "/api": {
+        target: "https://uniuyo-qr-attendance-fttn.onrender.com",
+        changeOrigin: true,
+      },
     },
   },
 });
