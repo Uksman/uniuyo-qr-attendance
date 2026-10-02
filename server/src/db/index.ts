@@ -3,8 +3,7 @@ import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import path from "node:path";
 import * as schema from "./schema.js";
-
-import { seedDb } from "../../scripts/seed.js";
+import { seedDb } from "./seed.js";
 
 const pgliteDataDir = process.env.PGLITE_DATA_DIR || "./.pglite_data";
 export const client = new PGlite(pgliteDataDir);
