@@ -3,7 +3,8 @@ import { eq } from "drizzle-orm";
 import { db } from "./index.js";
 import { courses, enrollments, students, users } from "./schema.js";
 
-const DEMO_PASSWORD = "Password123!";
+const DEMO_PASSWORD_HASH =
+  "$2a$10$49CnCoc4IsUPBtBHVF8sXuAvbFyyfhCeBDeeoMAK6cnh3hhn2Q5ui"; // "Password123!"
 
 async function upsertUser(params: {
   email: string;
@@ -17,7 +18,7 @@ async function upsertUser(params: {
     return existing;
   }
 
-  const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
+  const passwordHash = DEMO_PASSWORD_HASH;
   const [created] = await db
     .insert(users)
     .values({

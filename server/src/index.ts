@@ -24,7 +24,7 @@ app.use("/api/reports", reportRouter);
 
 async function startServer() {
   await initDb();
-  app.listen(env.PORT, () => {
+  app.listen(env.PORT, "0.0.0.0", () => {
     console.log(`QR attendance API listening on port ${env.PORT}`);
   });
 }

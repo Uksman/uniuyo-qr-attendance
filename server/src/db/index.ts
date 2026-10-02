@@ -8,7 +8,7 @@ import * as schema from "./schema.js";
 import { seedDb } from "./seed.js";
 
 const pgliteDataDir = process.env.PGLITE_DATA_DIR || "./.pglite_data";
-export const client = new PGlite(pgliteDataDir);
+export const client = new PGlite(pgliteDataDir, { relaxedDurability: true });
 export const db = drizzle({ client, schema });
 
 export async function initDb() {
