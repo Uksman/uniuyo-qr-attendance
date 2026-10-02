@@ -7,21 +7,15 @@ import {
   QrCodeIcon,
   ChartBarIcon,
   LogoutIcon,
-  InstallAppIcon,
   AlertTriangleIcon,
 } from "./components/Icons";
 
 export function AppShell() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
-    function handleBeforeInstallPrompt(e: Event) {
-      e.preventDefault();
-      setDeferredPrompt(e);
-    }
     function handleOnline() {
       setIsOnline(true);
     }
@@ -29,25 +23,14 @@ export function AppShell() {
       setIsOnline(false);
     }
 
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
 
     return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-
-  async function handleInstallApp() {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === "accepted") {
-      setDeferredPrompt(null);
-    }
-  }
 
   const portalTitle =
     user?.role === "lecturer"
@@ -129,18 +112,6 @@ export function AppShell() {
                 <ScanIcon className="h-4 w-4" />
                 <span>Attendance Scanner</span>
               </NavLink>
-            )}
-
-            {/* Install PWA Prompt Button */}
-            {deferredPrompt && (
-              <button
-                type="button"
-                onClick={handleInstallApp}
-                className="hidden md:flex items-center gap-1.5 rounded-full bg-[#00A859]/10 border border-[#00A859]/30 px-3 py-1 text-xs font-bold text-[#00A859] transition hover:bg-[#00A859] hover:text-white"
-              >
-                <InstallAppIcon className="h-3.5 w-3.5" />
-                <span>Install App</span>
-              </button>
             )}
 
             {/* Profile Badge */}

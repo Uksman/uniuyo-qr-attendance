@@ -351,3 +351,8 @@ erDiagram
 
 Developed for the **University of Uyo Directorate of ICT**.  
 Academic project under MIT License.
+
+
+## Install on a phone
+
+The client includes an install control. On supported Android browsers it opens the native install prompt; on iPhone, open the deployed site in Safari and use Share → Add to Home Screen. Browser installation requires the production site to be served over HTTPS.
